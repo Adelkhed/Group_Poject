@@ -1,26 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const Navbar = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container-fluid">
-      <Link className="navbar-brand" to="/">Adel</Link>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item"><Link className="nav-link" to="/category1">Category 1</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/category2">Category 2</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/category3">Category 3</Link></li>
-        </ul>
-        <div className="d-flex gap-3">
-          <i className="bi bi-search"></i>
-          <i className="bi bi-person"></i>
-          <i className="bi bi-cart"></i>
+const Navbar = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container">
+        <Link className="navbar-brand" to="/">Floral Haven</Link>
+        <div className="navbar-nav">
+          <Link className="nav-link" to="/flowers">Shop</Link>
+          <Link className="nav-link" to="/cart">Cart</Link>
+          <button className="btn btn-danger btn-sm ms-3" onClick={handleLogout}>Déconnexion</button>
         </div>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
+
 export default Navbar;
